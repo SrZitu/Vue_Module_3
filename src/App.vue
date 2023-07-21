@@ -1,23 +1,47 @@
 <script setup>
-const number = 16
-const animal = "Tiger"
-const searchUrl = 'https://www.pexels.com/search/'
+const location = "Rajshahi";
+const weather = "k";
 </script>
 
 <template>
-  <div class="container mx-auto flex items-center justify-center min-h-screen flex-col">
-      <h1 class="text-4xl">Welcome. Get ready to master Vue.js 3!</h1>
-      <h2 class="mt-10 text-xl text-purple-700">{{ number }} / 4 = {{ number / 4 }}</h2>
-      <h2 class="mt-10 text-xl text-purple-700">{{ number }} is {{ number % 2 == 0 ? "Even" : "Odd"  }}</h2>
-      <h2 class="mt-10 text-xl text-purple-700">
-        <a target="_blank" :href="searchUrl+animal.toLowerCase()">Search For {{ animal }}</a>
+  <section class="container mx-auto flex items-center flex-col">
+    <h1 class="text-center text-2xl py-3">Logic in Vue.js</h1>
+    <div class="w-1/3 bg-gray-200 p-10 flex items-center flex-col space-y-10">
+      <h1 class="text-3xl">{{ location }}</h1>
+      <h2 class="text-2xl" v-if="weather == 's'">Weather: Sunny</h2>
+      <h2 class="text-2xl" v-else-if="weather == 'pc'">
+        Weather: Partly Cloudy
       </h2>
-      <h2 class="mt-10 text-xl text-purple-700">
-        <a target="_blank" :href="`https://www.pexels.com/search/${animal.toLowerCase()}`">Search For {{ animal }}</a>
-      </h2>
-  </div>
+      <h2 class="text-2xl" v-else-if="weather == 'r'">Weather: Rainy</h2>
+      <h2 class="text-2xl" v-else-if="weather == 't'">Weather: Thunderstorm</h2>
+      <h2 class="text-2xl" v-else>Weather: Cyclone</h2>
+      <img
+        v-if="weather == 's'"
+        src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/7911203/weather-icon-md.png"
+        alt=""
+      />
+      <img
+        v-else-if="weather == 'pc'"
+        src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/7912718/weather-icon-md.png"
+        alt=""
+      />
+      <img
+        v-else-if="weather == 'r'"
+        src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/7913380/weather-icon-md.png"
+        alt=""
+      />
+      <img
+        v-else-if="weather == 't'"
+        src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/7912589/weather-icon-md.png"
+        alt=""
+      />
+      <img
+        v-else
+        src="https://cdn-icons-png.flaticon.com/128/2480/2480641.png"
+        alt=""
+      />
+    </div>
+  </section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
